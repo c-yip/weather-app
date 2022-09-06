@@ -9,13 +9,15 @@ submit.addEventListener('click', () => {
   location = locationSearch.value;
   console.log(location);
   getCurrentWeather(fahrenheit, location)
-    .then((currentWeatherData) => console.log(currentWeatherData));
+    .then((currentWeatherData) => console.log(currentWeatherData))
+    .catch((err) => console.log('Error:', err.message));
 });
 
 // fetches weather data
 const getCurrentWeather = async (unit, location) => {
   const unitSelection = unit;
   const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${location}&units=${unitSelection}&appid=${weatherAPI}`);
+
   const currentWeatherData = await response.json();
   return currentWeatherData;
 };
