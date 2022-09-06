@@ -1,3 +1,6 @@
+import './scss/styles.scss';
+import * as bootstrap from 'bootstrap';
+
 const weatherAPI = '904aa33c255754744867c717f0deff45';
 const locationSearch = document.getElementById('search');
 const submit = document.getElementById('submit');
