@@ -1,3 +1,5 @@
+import displayControl from './dom-control';
+
 const weatherAPI = '904aa33c255754744867c717f0deff45';
 const locationSearch = document.getElementById('search');
 const submit = document.getElementById('submit');
@@ -8,9 +10,17 @@ let location;
 export default function submitLocation() {
   submit.addEventListener('click', () => {
     location = locationSearch.value;
-    console.log(location);
     getCurrentWeather(fahrenheit, location)
-      .then((currentWeatherData) => console.log(currentWeatherData.description))
+      .then((currentWeatherData) => displayControl(
+        currentWeatherData.currentTemp,
+        currentWeatherData.locationName,
+        currentWeatherData.description,
+        currentWeatherData.icon,
+        currentWeatherData.clouds,
+        currentWeatherData.wind,
+        currentWeatherData.feelsLike,
+        currentWeatherData.humidity,
+      ))
       .catch((err) => console.log('Error:', err.message));
   });
 }
@@ -30,7 +40,7 @@ const getCurrentWeather = async (unit, loc) => {
     description: data.weather[0].description,
     icon: data.weather[0].icon,
     clouds: data.clouds.all,
-    wind: `${data.wind.gust} mph`,
+    wind: data.wind.speed,
     feelsLike: data.main.feels_like,
     humidity: data.main.humidity,
     min: data.main.temp_min,
@@ -39,5 +49,3 @@ const getCurrentWeather = async (unit, loc) => {
 
   return currentWeatherData;
 };
-
-getCurrentWeather(fahrenheit, 'west covina');
