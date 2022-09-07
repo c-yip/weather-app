@@ -7,7 +7,7 @@ const fahrenheit = 'imperial';
 const celsius = 'metric';
 let location;
 
-export default function submitLocation() {
+export function submitLocation() {
   submit.addEventListener('click', () => {
     location = locationSearch.value;
     getCurrentWeather(fahrenheit, location)
@@ -49,3 +49,18 @@ const getCurrentWeather = async (unit, loc) => {
 
   return currentWeatherData;
 };
+
+export function createDom() {
+  getCurrentWeather(fahrenheit, 'west covina')
+    .then((currentWeatherData) => displayControl(
+      currentWeatherData.currentTemp,
+      currentWeatherData.locationName,
+      currentWeatherData.description,
+      currentWeatherData.icon,
+      currentWeatherData.clouds,
+      currentWeatherData.wind,
+      currentWeatherData.feelsLike,
+      currentWeatherData.humidity,
+    ))
+    .catch((err) => console.log('Error:', err.message));
+}

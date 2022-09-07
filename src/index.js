@@ -1,5 +1,6 @@
 import './scss/styles.scss';
 import * as bootstrap from 'bootstrap';
-import submitLocation from './weather-fetch';
+import { submitLocation, createDom } from './weather-fetch';
 
 submitLocation();
+createDom();
