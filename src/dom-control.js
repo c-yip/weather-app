@@ -12,7 +12,19 @@ const hourlyContainer = document.querySelector('.hourly-temp');
 let windUnit;
 let degreeUnit;
 
-export function displayControl(temp, loc, des, icon, cloud, win, fl, hum, min, max, unit) {
+export function displayControl(
+  temp,
+  loc,
+  des,
+  icon,
+  cloud,
+  win,
+  fl,
+  hum,
+  min,
+  max,
+  unit,
+) {
   const chosenUnit = unit;
   if (chosenUnit === 'imperial') {
     windUnit = 'mph';
@@ -49,21 +61,46 @@ function createHourlyElements(time, img, temp, unit) {
     degreeUnit = '\u00B0C';
   }
 
+  const container = document.createElement('div');
+  container.classList.add('col');
+  hourlyContainer.appendChild(container);
   const timeDiv = document.createElement('div');
-  timeDiv.textContent = time;
+  const date = new Date(time * 1000);
+  timeDiv.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   const iconHourlyImg = document.createElement('img');
   iconHourlyImg.setAttribute('src', `http://openweathermap.org/img/wn/${img}@2x.png`);
   const tempDiv = document.createElement('div');
   tempDiv.textContent = parseInt(temp) + degreeUnit;
-  hourlyContainer.appendChild(timeDiv);
-  hourlyContainer.appendChild(iconHourlyImg);
-  hourlyContainer.appendChild(tempDiv);
+  container.appendChild(timeDiv);
+  container.appendChild(iconHourlyImg);
+  container.appendChild(tempDiv);
 }
 
-export function hourlyDisplayControl(h1Time, h1Icon, h1Temp, unit) {
+export function hourlyDisplayControl(
+  h1Time,
+  h1Icon,
+  h1Temp,
+  h2Time,
+  h2Icon,
+  h2Temp,
+  h3Time,
+  h3Icon,
+  h3Temp,
+  h4Time,
+  h4Icon,
+  h4Temp,
+  h5Time,
+  h5Icon,
+  h5Temp,
+  unit,
+) {
   while (hourlyContainer.firstChild) {
     hourlyContainer.removeChild(hourlyContainer.firstChild);
   }
 
   createHourlyElements(h1Time, h1Icon, h1Temp, unit);
+  createHourlyElements(h2Time, h2Icon, h2Temp, unit);
+  createHourlyElements(h3Time, h3Icon, h3Temp, unit);
+  createHourlyElements(h4Time, h4Icon, h4Temp, unit);
+  createHourlyElements(h5Time, h5Icon, h5Temp, unit);
 }

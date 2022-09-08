@@ -45,6 +45,22 @@ const getHourlyForecast = async (unit, loc) => {
     hour1time: data.list[0].dt,
     hour1temp: data.list[0].main.temp,
     hour1icon: data.list[0].weather[0].icon,
+
+    hour2time: data.list[1].dt,
+    hour2temp: data.list[1].main.temp,
+    hour2icon: data.list[1].weather[0].icon,
+
+    hour3time: data.list[2].dt,
+    hour3temp: data.list[2].main.temp,
+    hour3icon: data.list[2].weather[0].icon,
+
+    hour4time: data.list[3].dt,
+    hour4temp: data.list[3].main.temp,
+    hour4icon: data.list[3].weather[0].icon,
+
+    hour5time: data.list[4].dt,
+    hour5temp: data.list[4].main.temp,
+    hour5icon: data.list[4].weather[0].icon,
   };
 
   return hourlyForecastData;
@@ -77,6 +93,23 @@ function displayWeather(unit, loc) {
       hourlyForecastData.hour1time,
       hourlyForecastData.hour1icon,
       hourlyForecastData.hour1temp,
+
+      hourlyForecastData.hour2time,
+      hourlyForecastData.hour2icon,
+      hourlyForecastData.hour2temp,
+
+      hourlyForecastData.hour3time,
+      hourlyForecastData.hour3icon,
+      hourlyForecastData.hour3temp,
+
+      hourlyForecastData.hour4time,
+      hourlyForecastData.hour4icon,
+      hourlyForecastData.hour4temp,
+
+      hourlyForecastData.hour5time,
+      hourlyForecastData.hour5icon,
+      hourlyForecastData.hour5temp,
+
       chosenUnit,
     ))
     .catch((err) => console.log('Error:', err.message));
