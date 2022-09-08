@@ -35,6 +35,8 @@ const getCurrentWeather = async (unit, loc) => {
 };
 
 function displayWeather(unit, loc) {
+  const errorMessage = document.getElementById('error-message');
+  errorMessage.textContent = '';
   getCurrentWeather(unit, loc)
     .then((currentWeatherData) => displayControl(
       currentWeatherData.currentTemp,
@@ -49,18 +51,23 @@ function displayWeather(unit, loc) {
       currentWeatherData.max,
       chosenUnit,
     ))
-    .catch((err) => console.log('Error:', err.message));
+    .catch((err) => {
+      console.log('Error:', err.message);
+      errorMessage.textContent = 'City not found';
+    });
 }
 
 // user location search
 function submitLocation() {
   submit.addEventListener('click', () => {
     location = locationSearch.value;
+    locationSearch.value = '';
     displayWeather(chosenUnit, location);
   });
   locationSearch.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
       location = locationSearch.value;
+      locationSearch.value = '';
       displayWeather(chosenUnit, location);
     }
   });
