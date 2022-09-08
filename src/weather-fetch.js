@@ -58,6 +58,12 @@ function submitLocation() {
     location = locationSearch.value;
     displayWeather(chosenUnit, location);
   });
+  locationSearch.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      location = locationSearch.value;
+      displayWeather(chosenUnit, location);
+    }
+  });
 }
 
 // creates dom on page load

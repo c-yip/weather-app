@@ -13,7 +13,6 @@ let degreeUnit;
 
 export default function displayControl(temp, loc, des, icon, cloud, win, fl, hum, min, max, unit) {
   const chosenUnit = unit;
-  console.log(chosenUnit);
   if (chosenUnit === 'imperial') {
     windUnit = 'mph';
     degreeUnit = '\u00B0F';
