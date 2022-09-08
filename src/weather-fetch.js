@@ -7,8 +7,8 @@ const f = document.getElementById('fahrenheit-btn');
 const c = document.getElementById('celsius-btn');
 const fahrenheit = 'imperial';
 const celsius = 'metric';
-let location;
-let chosenUnit;
+let location = 'west covina';
+let chosenUnit = fahrenheit;
 
 // fetches weather data
 const getCurrentWeather = async (unit, loc) => {
@@ -33,44 +33,8 @@ const getCurrentWeather = async (unit, loc) => {
   };
   return currentWeatherData;
 };
-
-// user unit choice
-export function unitChoice() {
-  f.addEventListener('click', () => {
-    chosenUnit = fahrenheit;
-    console.log(chosenUnit);
-  });
-}
-
-c.addEventListener('click', () => {
-  chosenUnit = celsius;
-  console.log(chosenUnit);
-});
-
-// user location search
-export function submitLocation() {
-  submit.addEventListener('click', () => {
-    location = locationSearch.value;
-    getCurrentWeather(chosenUnit, location)
-      .then((currentWeatherData) => displayControl(
-        currentWeatherData.currentTemp,
-        currentWeatherData.locationName,
-        currentWeatherData.description,
-        currentWeatherData.icon,
-        currentWeatherData.clouds,
-        currentWeatherData.wind,
-        currentWeatherData.feelsLike,
-        currentWeatherData.humidity,
-        currentWeatherData.min,
-        currentWeatherData.max,
-      ))
-      .catch((err) => console.log('Error:', err.message));
-  });
-}
-
-// creates dom on page load
-export function createDom() {
-  getCurrentWeather(fahrenheit, 'west covina')
+function displayWeather(unit, loc) {
+  getCurrentWeather(unit, loc)
     .then((currentWeatherData) => displayControl(
       currentWeatherData.currentTemp,
       currentWeatherData.locationName,
@@ -84,4 +48,36 @@ export function createDom() {
       currentWeatherData.max,
     ))
     .catch((err) => console.log('Error:', err.message));
+}
+// user location search
+function submitLocation() {
+  submit.addEventListener('click', () => {
+    location = locationSearch.value;
+    displayWeather(chosenUnit, location);
+  });
+}
+
+// creates dom on page load
+function createDom() {
+  displayWeather(chosenUnit, location);
+}
+
+// user unit choice
+function unitChoice() {
+  f.addEventListener('click', () => {
+    chosenUnit = fahrenheit;
+    console.log(chosenUnit);
+    createDom();
+  });
+  c.addEventListener('click', () => {
+    chosenUnit = celsius;
+    console.log(chosenUnit);
+    createDom();
+  });
+}
+
+export default function onLoad() {
+  unitChoice();
+  submitLocation();
+  createDom();
 }
