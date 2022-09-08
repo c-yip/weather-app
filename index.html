@@ -45,14 +45,17 @@
           <div class="container text-danger" id="error-message"></div>
           <div class="container">
             <input type="radio" class="btn-check" name="options-outlined" id="fahrenheit-btn" autocomplete="off" checked>
-            <label class="btn btn-outline-primary" for="fahrenheit-btn">Fahrenheit</label>
+            <label class="btn btn-outline-dark" for="fahrenheit-btn">Fahrenheit</label>
             <input type="radio" class="btn-check" name="options-outlined" id="celsius-btn" autocomplete="off">
-            <label class="btn btn-outline-primary" for="celsius-btn">Celsius</label>
+            <label class="btn btn-outline-dark" for="celsius-btn">Celsius</label>
           </div>
     
           <div class="weather-details container">
             <div class="h4">Weather Details</div>
             <div class="row">
+              <div class="col">Rain Chance (3hr)</div>
+              <div class="col" id="rain"></div>
+              <div class="w-100"></div>
               <div class="col">Clouds</div>
               <div class="col" id="cloudy"></div>
               <div class="w-100"></div>
