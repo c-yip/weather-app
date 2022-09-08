@@ -61,8 +61,9 @@ const getHourlyForecast = async (unit, loc) => {
     hour5time: data.list[4].dt,
     hour5temp: data.list[4].main.temp,
     hour5icon: data.list[4].weather[0].icon,
-  };
 
+    rainChance: data.list[0].pop,
+  };
   return hourlyForecastData;
 };
 
@@ -111,6 +112,8 @@ function displayWeather(unit, loc) {
       hourlyForecastData.hour5temp,
 
       chosenUnit,
+
+      hourlyForecastData.rainChance,
     ))
     .catch((err) => console.log('Error:', err.message));
 }

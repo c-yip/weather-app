@@ -9,6 +9,7 @@ const humidity = document.querySelector('#humidity');
 const iconImg = document.querySelector('#icon');
 const minMax = document.querySelector('#min-max');
 const hourlyContainer = document.querySelector('.hourly-temp');
+const rain = document.querySelector('#rain');
 let windUnit;
 let degreeUnit;
 
@@ -93,10 +94,12 @@ export function hourlyDisplayControl(
   h5Icon,
   h5Temp,
   unit,
+  r,
 ) {
   while (hourlyContainer.firstChild) {
     hourlyContainer.removeChild(hourlyContainer.firstChild);
   }
+  rain.textContent = `${r}%`;
 
   createHourlyElements(h1Time, h1Icon, h1Temp, unit);
   createHourlyElements(h2Time, h2Icon, h2Temp, unit);
