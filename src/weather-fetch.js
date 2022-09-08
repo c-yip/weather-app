@@ -3,29 +3,12 @@ import displayControl from './dom-control';
 const weatherAPI = '904aa33c255754744867c717f0deff45';
 const locationSearch = document.getElementById('search');
 const submit = document.getElementById('submit');
+const f = document.getElementById('fahrenheit-btn');
+const c = document.getElementById('celsius-btn');
 const fahrenheit = 'imperial';
 const celsius = 'metric';
 let location;
-
-export function submitLocation() {
-  submit.addEventListener('click', () => {
-    location = locationSearch.value;
-    getCurrentWeather(fahrenheit, location)
-      .then((currentWeatherData) => displayControl(
-        currentWeatherData.currentTemp,
-        currentWeatherData.locationName,
-        currentWeatherData.description,
-        currentWeatherData.icon,
-        currentWeatherData.clouds,
-        currentWeatherData.wind,
-        currentWeatherData.feelsLike,
-        currentWeatherData.humidity,
-        currentWeatherData.min,
-        currentWeatherData.max,
-      ))
-      .catch((err) => console.log('Error:', err.message));
-  });
-}
+let chosenUnit;
 
 // fetches weather data
 const getCurrentWeather = async (unit, loc) => {
@@ -50,6 +33,40 @@ const getCurrentWeather = async (unit, loc) => {
   };
   return currentWeatherData;
 };
+
+// user unit choice
+export function unitChoice() {
+  f.addEventListener('click', () => {
+    chosenUnit = fahrenheit;
+    console.log(chosenUnit);
+  });
+}
+
+c.addEventListener('click', () => {
+  chosenUnit = celsius;
+  console.log(chosenUnit);
+});
+
+// user location search
+export function submitLocation() {
+  submit.addEventListener('click', () => {
+    location = locationSearch.value;
+    getCurrentWeather(chosenUnit, location)
+      .then((currentWeatherData) => displayControl(
+        currentWeatherData.currentTemp,
+        currentWeatherData.locationName,
+        currentWeatherData.description,
+        currentWeatherData.icon,
+        currentWeatherData.clouds,
+        currentWeatherData.wind,
+        currentWeatherData.feelsLike,
+        currentWeatherData.humidity,
+        currentWeatherData.min,
+        currentWeatherData.max,
+      ))
+      .catch((err) => console.log('Error:', err.message));
+  });
+}
 
 // creates dom on page load
 export function createDom() {
