@@ -8,61 +8,62 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container-fluid min-vh-100 bg-secondary text-white">
-    <div class="row">
-      <div class="col-sm-8">
-        <div class="row">
-          <div class="container d-flex gap-3">
-            <div class="d-flex">
-              <div class="current-temp display-1">90</div>
-              <div class="display-1" id="degrees">&#8457;</div>
-            </div>
-            <div class="location-time-date">
-              <div class="location display-4">West Covina</div>
-              <div class="time-date h5">4:20 PM - Tuesday, Sept. 6</div>
-            </div>
-            <div class="d-flex flex-column align-items-center">
-              <img src="" alt="weather icon" id="icon">
-              <div class="description h5">Description</div>
-            </div>
-          </div>
-
+  <div class="container-fluid bg-dark h-100 d-flex align-items-center justify-content-center">
+    <div class="container-fluid bg-secondary text-white p-5">
+      <div class="row">
+        <div class="col-sm-8 p-3">
           <div class="row">
-            <div class="hourly-display row">
-              <p>Hourly Forecast</p>
-              <div class="hourly-temp">hourly temp cards</div>
+            <div class="container d-flex gap-3">
+              <div class="d-flex">
+                <div class="current-temp display-1">90</div>
+                <div class="display-1" id="degrees">&#8457;</div>
+              </div>
+              <div class="location-time-date">
+                <div class="location display-4">West Covina</div>
+                <div class="time-date h5">4:20 PM - Tuesday, Sept. 6</div>
+              </div>
+              <div class="d-flex flex-column align-items-center">
+                <img src="" alt="weather icon" id="icon">
+                <div class="description h5">Description</div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="hourly-display row">
+                <p>Hourly Forecast</p>
+                <div class="hourly-temp">hourly temp cards</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="col-sm-4">
-        <div class="location-search d-flex">
-          <input id="search" class="form-control" type="text" placeholder="Change City">
-          <button type="button" class="btn btn-light" id="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-          </svg></button>
-        </div>
-
-        <input type="radio" class="btn-check" name="options-outlined" id="fahrenheit-btn" autocomplete="off" checked>
-        <label class="btn btn-outline-primary" for="fahrenheit-btn">Fahrenheit</label>
-        <input type="radio" class="btn-check" name="options-outlined" id="celsius-btn" autocomplete="off">
-        <label class="btn btn-outline-primary" for="celsius-btn">Celsius</label>
-        
-        <div class="weather-details">
-          <div class="h4">Weather Details</div>
-          <div class="row">
-            <div class="col">Cloudy</div>
-            <div class="col" id="cloudy"></div>
-            <div class="w-100"></div>
-            <div class="col">Wind</div>
-            <div class="col"id="wind"></div>
-            <div class="w-100"></div>
-            <div class="col">Feels Like</div>
-            <div class="col" id="feels-like"></div>
-            <div class="w-100"></div>
-            <div class="col">Humidity</div>
-            <div class="col" id="humidity"></div>
+        <div class="col-sm-4 p-3">
+          <div class="location-search d-flex container p-2">
+            <input id="search" class="form-control" type="text" placeholder="Change City">
+            <button type="button" class="btn btn-light" id="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg></button>
+          </div>
+          <div class="container">
+            <input type="radio" class="btn-check" name="options-outlined" id="fahrenheit-btn" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="fahrenheit-btn">Fahrenheit</label>
+            <input type="radio" class="btn-check" name="options-outlined" id="celsius-btn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="celsius-btn">Celsius</label>
+          </div>
+    
+          <div class="weather-details container">
+            <div class="h4">Weather Details</div>
+            <div class="row">
+              <div class="col">Cloudy</div>
+              <div class="col" id="cloudy"></div>
+              <div class="w-100"></div>
+              <div class="col">Wind</div>
+              <div class="col"id="wind"></div>
+              <div class="w-100"></div>
+              <div class="col">Feels Like</div>
+              <div class="col" id="feels-like"></div>
+              <div class="w-100"></div>
+              <div class="col">Humidity</div>
+              <div class="col" id="humidity"></div>
+            </div>
           </div>
         </div>
       </div>
