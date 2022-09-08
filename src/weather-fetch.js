@@ -7,7 +7,7 @@ const f = document.getElementById('fahrenheit-btn');
 const c = document.getElementById('celsius-btn');
 const fahrenheit = 'imperial';
 const celsius = 'metric';
-let location = 'west covina';
+let location = 'los angeles';
 let chosenUnit = fahrenheit;
 
 // fetches weather data
@@ -33,6 +33,7 @@ const getCurrentWeather = async (unit, loc) => {
   };
   return currentWeatherData;
 };
+
 function displayWeather(unit, loc) {
   getCurrentWeather(unit, loc)
     .then((currentWeatherData) => displayControl(
@@ -46,9 +47,11 @@ function displayWeather(unit, loc) {
       currentWeatherData.humidity,
       currentWeatherData.min,
       currentWeatherData.max,
+      chosenUnit,
     ))
     .catch((err) => console.log('Error:', err.message));
 }
+
 // user location search
 function submitLocation() {
   submit.addEventListener('click', () => {
@@ -66,12 +69,10 @@ function createDom() {
 function unitChoice() {
   f.addEventListener('click', () => {
     chosenUnit = fahrenheit;
-    console.log(chosenUnit);
     createDom();
   });
   c.addEventListener('click', () => {
     chosenUnit = celsius;
-    console.log(chosenUnit);
     createDom();
   });
 }
