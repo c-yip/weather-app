@@ -1,4 +1,4 @@
-import displayControl from './dom-control';
+import { displayControl, hourlyDisplayControl } from './dom-control';
 
 const weatherAPI = '904aa33c255754744867c717f0deff45';
 const locationSearch = document.getElementById('search');
@@ -34,6 +34,22 @@ const getCurrentWeather = async (unit, loc) => {
   return currentWeatherData;
 };
 
+const getHourlyForecast = async (unit, loc) => {
+  const unitSelection = unit;
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${loc}&units=${unitSelection}&appid=${weatherAPI}`);
+
+  const data = await response.json();
+  console.log('Five Day:', data);
+
+  const hourlyForecastData = {
+    hour1time: data.list[0].dt,
+    hour1temp: data.list[0].main.temp,
+    hour1icon: data.list[0].weather[0].icon,
+  };
+
+  return hourlyForecastData;
+};
+
 function displayWeather(unit, loc) {
   const errorMessage = document.getElementById('error-message');
   errorMessage.textContent = '';
@@ -55,6 +71,15 @@ function displayWeather(unit, loc) {
       console.log('Error:', err.message);
       errorMessage.textContent = 'City not found';
     });
+
+  getHourlyForecast(unit, loc)
+    .then((hourlyForecastData) => hourlyDisplayControl(
+      hourlyForecastData.hour1time,
+      hourlyForecastData.hour1icon,
+      hourlyForecastData.hour1temp,
+      chosenUnit,
+    ))
+    .catch((err) => console.log('Error:', err.message));
 }
 
 // user location search
@@ -94,4 +119,5 @@ export default function onLoad() {
   unitChoice();
   submitLocation();
   createDom();
+  getHourlyForecast(chosenUnit, location);
 }
