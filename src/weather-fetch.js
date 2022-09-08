@@ -20,6 +20,8 @@ export function submitLocation() {
         currentWeatherData.wind,
         currentWeatherData.feelsLike,
         currentWeatherData.humidity,
+        currentWeatherData.min,
+        currentWeatherData.max,
       ))
       .catch((err) => console.log('Error:', err.message));
   });
@@ -46,10 +48,10 @@ const getCurrentWeather = async (unit, loc) => {
     min: data.main.temp_min,
     max: data.main.temp_max,
   };
-
   return currentWeatherData;
 };
 
+// creates dom on page load
 export function createDom() {
   getCurrentWeather(fahrenheit, 'west covina')
     .then((currentWeatherData) => displayControl(
@@ -61,6 +63,8 @@ export function createDom() {
       currentWeatherData.wind,
       currentWeatherData.feelsLike,
       currentWeatherData.humidity,
+      currentWeatherData.min,
+      currentWeatherData.max,
     ))
     .catch((err) => console.log('Error:', err.message));
 }
