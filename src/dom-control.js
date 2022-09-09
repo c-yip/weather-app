@@ -99,7 +99,7 @@ export function hourlyDisplayControl(
   while (hourlyContainer.firstChild) {
     hourlyContainer.removeChild(hourlyContainer.firstChild);
   }
-  rain.textContent = `${r}%`;
+  rain.textContent = `${r * 100}%`;
 
   createHourlyElements(h1Time, h1Icon, h1Temp, unit);
   createHourlyElements(h2Time, h2Icon, h2Temp, unit);
