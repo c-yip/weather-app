@@ -6,3 +6,10 @@ html, body {
   background: url(pexels-adrien-olichon-2387793.jpg);
   background-size: cover;
 }
+
+@media only screen and (max-width: 600px) {
+  #section-1, #section-2 {
+    border: none !important;
+    background: none !important;
+  }
+}

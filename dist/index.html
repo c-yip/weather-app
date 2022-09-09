@@ -8,34 +8,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container-fluid h-100 d-flex align-items-center justify-content-center" id="container">
-    <div class="container-lg-fluid text-white p-5">
-      <div class="row border border-light">
-        <div class="col-sm-8 p-3 bg-dark bg-opacity-75">
-          <div class="row">
-            <div class="container d-flex flex-column flex-md-row gap-3">
-              <div class="d-flex">
-                <div class="current-temp display-1"></div>
-              </div>
-              <div class="location-time-date">
-                <div class="location display-4">West Covina</div>
-                <div class="time-date h5">4:20 PM - Tuesday, Sept. 6</div>
-              </div>
-              <div class="d-flex flex-column align-items-center">
+  <div class="container-fluid text-white h-100 d-md-flex align-items-center" id="container">
+    <div class="row mx-md-5">
+      <div class="col-md-8 p-3 bg-dark bg-opacity-75 border border-white" id="section-1">
+        <div class="row align-items-center text-center">
+          <div class="col-md">
+            <div class="current-temp display-1"></div>
+          </div>
+          <div class="col-md-6">
+            <div class="location-time-date">
+              <div class="location display-4">West Covina</div>
+              <div class="time-date h5">4:20 PM - Tuesday, Sept. 6</div>
+            </div>
+          </div>
+          <div class="col-md">
                 <img src="" alt="weather icon" id="icon">
                 <div class="description h5">Description</div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="hourly-display">
-                <p>&#128342;Hourly Forecast</p>
-                <div class="container row hourly-temp text-center"></div>
-              </div>
+          </div>
+          <div class="row d-none d-sm-block">
+            <div class="hourly-display">
+              <p class="text-start">&#128342;Hourly Forecast</p>
+              <div class="container row hourly-temp text-center"></div>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-4 p-3 d-flex flex-column gap-3 bg-secondary bg-opacity-50">
+      <div class="col-md-4 p-3 d-flex flex-column gap-3 bg-secondary bg-opacity-50 border border-white" id="section-2">
+        <div class="row">
           <div class="location-search d-flex container p-2">
             <input id="search" class="form-control" type="text" placeholder="Change City">
             <button type="button" class="btn btn-light" id="submit"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -43,14 +43,23 @@
             </svg></button>
           </div>
           <div class="container text-danger" id="error-message"></div>
-          <div class="container">
-            <input type="radio" class="btn-check" name="options-outlined" id="fahrenheit-btn" autocomplete="off" checked>
-            <label class="btn btn-outline-light" for="fahrenheit-btn">Fahrenheit</label>
-            <input type="radio" class="btn-check" name="options-outlined" id="celsius-btn" autocomplete="off">
-            <label class="btn btn-outline-light" for="celsius-btn">Celsius</label>
+        </div>
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-4">
+              <input type="radio" class="btn-check" name="options-outlined" id="fahrenheit-btn" autocomplete="off" checked>
+              <label class="btn btn-outline-light" for="fahrenheit-btn">Fahrenheit</label>
+            </div>
+            <div class="col">
+              <input type="radio" class="btn-check" name="options-outlined" id="celsius-btn" autocomplete="off">
+              <label class="btn btn-outline-light" for="celsius-btn">Celsius</label>
+            </div>
           </div>
+        </div>
     
-          <div class="weather-details container">
+        <div class="weather-details container">
+          <div class="row">
             <div class="h4">Weather Details</div>
             <div class="row">
               <div class="col">Rain Chance (3hr)</div>
